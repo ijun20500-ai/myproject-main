@@ -104,11 +104,12 @@ def create():
             # 파일 저장
             # 사용자가 업로드한 파일명을 운영체제에서 안전하게 사용할 수 있는 형태로 변환하여, 
             # 경로 조작(Path Traversal) 등의 보안 위험을 줄여 주는 함수
+
             filename = secure_filename(image_file.filename)
             # 출력해서 만들어진 파일이름을 확인합니다.
             print("filename ====> " , filename)
             
-            ext = os.path.splitext(filename)[1]
+            ext = os.path.splitext(image_file.filename)[1]
             filename = f"{uuid.uuid4()}{ext}"
             
             file_path = os.path.join(upload_folder, filename)
